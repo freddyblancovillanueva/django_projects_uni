@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        nav {
+            background-color: #333;
+            padding: 5px 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #f0e7e7;
+        }
+        .banner {
+            background: url('MEDIA/IMG/fondo.jpg') no-repeat center center;
+            background-size: cover;
+            height: 300px;
+            color: #f3ebeb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .banner h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+        .section {
+            padding: 15px 0;
+        }
+        .section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            padding: 7px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 0.9em;
+        }
+        .buttons a:hover {
+            background-color: #555;
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .product {
+            flex: 1;
+            min-width: 220px;
+            margin: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out;
+            perspective: 1000px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .product:hover img {
+            transform: scale(1.2);
+        }
+        .item.item:figure {
+            overflow: hidden;
+        }
+        .product h3 {
+            margin: 10px 0;
+            color: #444;
+        }
+        .product p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .pdf-viewer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pdf-viewer embed {
+            width: 100%;
+            height: 50vh; 
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <h1>Bienvenido a Nuestro Catálogo web </h1>
+    </div>
+       
+        <div class="section">
+            <h2>Productos Destacados</h2>
+            <div class="products">
+                <div class="product">
+                    <figure>
+                    <img src="/MEDIA/IMG/sarten electrico.jpg"> 
+                    <h3>sarten electrico</h3>
+                    <p>Hogar</p>
+                    <p>Precio $40</p>
+                    </figure>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/jarra.jpg">
+                    <h3>jarra de porcelana</h3>
+                    <p>Alta calidad y resistencia.</p>
+                    <p>Precio $100</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/bombillo.jpg">
+                    <h3>Bombillo led</h3>
+                    <p>bombillo led 20W, luz blanca.</p>
+                    <p>Precio $150</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/canasto.jpg">
+                    <h3>canasto para ropa</h3>
+                    <p>canasto para ropa de plastico, alta calidad y resistencia.</p>
+                    <p>Precio $100</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/microrefri.jpg">
+                    <h3>micro refrigerador</h3>
+                    <p>micro refrigerador color blanco tamaño 40cm x 20cm</p>
+                    <p>Precio $200</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/taza.jpg">
+                    <h3>taza</h3>
+                    <p>taza plastica tamaño 10cm x 5cm .</p>
+                    <p>Precio $10</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/tenedores.jpg">
+                    <h3>tenedores metalicos</h3>
+                    <p>juego de tenedores medianos 10uni.</p>
+                    <p>Precio $5</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/vasos.jpg">
+                    <h3>juego de vasos de vidrio</h3>
+                    <p>Juego de 15 vasos de vidrio tamaño grande.</p>
+                    <p>Precio $15</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/podadora.jpg">
+                    <h3>maquina podadora</h3>
+                    <p>maquina de podar electrica, incluye bateria 100w.</p>
+                    <p>Precio $230</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/prensapapel.jpg">
+                    <h3>prensa para papel</h3>
+                    <p>prensa de colores para papel.</p>
+                    <p>Precio $2</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/licuadora.jpg">
+                    <h3>licuadora</h3>
+                    <p>licuadora mediana de vidrio.</p>
+                    <p>Precio $20</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/plancha.jpg">
+                    <h3>plancha</h3>
+                    <p>plancha moderna para ropa.</p>
+                    <p>Precio $40</p>
+                </div>
+                <div class="product">
+                    <img src="/MEDIA/IMG/ventilador.jpg">
+                    <h3>ventilador</h3>
+                    <p>ventilador metalico.</p>
+                    <p>Precio $50</p>
+                </div>
+            </div>
+        </div>
+        <div class="pdf-viewer section">
+            <h2> PDF DEL CATALOGO </h2>
+            <embed src="/MEDIA/PDF/EMPRESA_final.pdf" type="application/pdf" /> 
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Catálogo Web. Todos los derechos reservados.          para mas informacion llamar al 8888 8888  o al correo catalogosalb@gmail.com
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agregar PDF{% endblock %}
+
+{% block contenido %}
+    <h1>Agregar PDF</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+{% endblock %}
