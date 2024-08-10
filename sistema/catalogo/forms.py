@@ -6,7 +6,7 @@ from .models import Producto, PDF
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'precio', ['usuario']]
+        fields = ['nombre', 'precio']
 
 class PDFForm(forms.ModelForm):
     class Meta:

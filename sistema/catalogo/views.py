@@ -4,13 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .models import Producto, PDF
 from .forms import ProductoForm, PDFForm, RegistroUsuarioForm, LoginUsuarioForm
 
-@login_required
-def listar_productos(request):
-    productos = Producto.objects.filter(usuario=request.user)
-    return render(request, 'catalogo/listar_productos.html', {'productos': productos})
-@login_required
 
-@login_required
+def listar_productos(request):
+    productos = Producto.objects.filter(id_usuario=request.user)
+    return render(request, 'paginas/inicio.html', {'productos': productos})
+
+
+
 def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -21,10 +21,10 @@ def agregar_producto(request):
             return redirect('listar_productos')
     else:
         form = ProductoForm()
-    return render(request, 'catalogo/agregar_producto.html', {'form': form})
-@login_required
+    return render(request, 'catalogo/agregar.html', {'form': form})
 
-@login_required
+
+
 def editar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
     if request.method == 'POST':
@@ -34,15 +34,15 @@ def editar_producto(request, pk):
             return redirect('listar_productos')
     else:
         form = ProductoForm(instance=producto)
-    return render(request, 'catalogo/editar_producto.html', {'form': form, 'producto': producto})
-@login_required
+    return render(request, 'catalogo/editar_form.html', {'form': form, 'producto': producto})
+
 
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
     if request.method == 'POST':
         producto.delete()
         return redirect('listar_productos')
-    return render(request, 'catalogo/eliminar_producto.html', {'producto': producto})
+    return render(request, 'catalogo/eliminar.html', {'producto': producto})
 
 def agregar_pdf(request):
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def agregar_pdf(request):
             return redirect('listar_productos')
     else:
         form = PDFForm()
-    return render(request, 'catalogo/agregar_pdf.html', {'form': form})
+    return render(request, 'catalogo/FORMULARIO.html', {'form': form})
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -63,7 +63,7 @@ def registrar_usuario(request):
             return redirect('listar_productos')
     else:
         form = RegistroUsuarioForm()
-    return render(request, 'catalogo/registrar_usuario.html', {'form': form})
+    return render(request, 'catalogo/registro_usuario.html', {'form': form})
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -74,7 +74,7 @@ def login_usuario(request):
             return redirect('listar_productos')
     else:
         form = LoginUsuarioForm()
-    return render(request, 'catalogo/login_usuario.html', {'form': form})
+    return render(request, 'catalogo/login.html', {'form': form})
 
 def logout_usuario(request):
     from django.contrib.auth import logout
