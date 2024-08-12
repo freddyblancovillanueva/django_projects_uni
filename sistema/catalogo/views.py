@@ -18,7 +18,7 @@ def agregar_producto(request):
             producto = form.save(commit=False)
             producto.usuario = request.user
             producto.save()
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = ProductoForm()
     return render(request, 'catalogo/agregar.html', {'form': form})
@@ -31,7 +31,7 @@ def editar_producto(request, pk):
         form = ProductoForm(request.POST, instance=producto)
         if form.is_valid():
             form.save()
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = ProductoForm(instance=producto)
     return render(request, 'catalogo/editar_form.html', {'form': form, 'producto': producto})
@@ -41,7 +41,7 @@ def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
     if request.method == 'POST':
         producto.delete()
-        return redirect('listar_productos')
+        return redirect('inicio.html')
     return render(request, 'catalogo/eliminar.html', {'producto': producto})
 
 def agregar_pdf(request):
@@ -49,7 +49,7 @@ def agregar_pdf(request):
         form = PDFForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = PDFForm()
     return render(request, 'catalogo/FORMULARIO.html', {'form': form})
@@ -60,7 +60,7 @@ def registrar_usuario(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = RegistroUsuarioForm()
     return render(request, 'catalogo/registro_usuario.html', {'form': form})
@@ -71,7 +71,7 @@ def login_usuario(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = LoginUsuarioForm()
     return render(request, 'catalogo/login.html', {'form': form})

@@ -158,27 +158,30 @@
     <div class="banner">
         <h1>Bienvenido a Nuestro Catálogo web </h1>
     </div>
-       
-        <div class="section">
-            <h2>Productos Destacados</h2>
-            <!-- #aplicar for para que los div carguen # -->
-            <div class="products">
-                <div class="product">
-                    <figure>
-                    <h3>sarten electrico</h3>
-                    <p>Hogar</p>
-                    <p>Precio $40</p>
-                    </figure>
-                </div>
-               
+
+    <div class="section">
+        <h2>Productos Destacados</h2>
+        <div class="products">
+            {% for producto in productos %}
+            <div class="product">
+                <figure>
+                    <img src="{{ producto.IMG.url }}" height="100">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.categoria.nombre }}</p>
+                    <p>{{ producto.descripcion }}</p>
+                    <p><a href="{% url 'editar' producto.id %}" class="btn btn-outline-warning">Editar</a></p>
+                    <p><a href="{% url 'eliminar' producto.id %}" class="btn btn-outline-danger">Eliminar</a></p>
+                </figure>
             </div>
-        </div>
-        <div class="pdf-viewer section">
-            <h2> PDF DEL CATALOGO </h2>
-            <embed src="/MEDIA/PDF/EMPRESA_final.pdf" type="application/pdf" /> 
+            {% endfor %}
         </div>
     </div>
 
+    <div class="pdf-viewer section">
+        <h2>PDF DEL CATALOGO</h2>
+        <embed src="/MEDIA/PDF/EMPRESA_final.pdf" type="application/pdf" />
+    </div>
+</body>
     <footer>
         &copy; 2024 Catálogo Web. Todos los derechos reservados.          para mas informacion llamar al 8888 8888  o al correo catalogosalb@gmail.com
 
