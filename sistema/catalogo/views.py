@@ -32,7 +32,7 @@ def editar_producto(request, pk):
             return redirect('inicio.html')
     else:
         form = ProductoForm(instance=producto)
-    return render(request, 'catalogo/editar_form.html', {'form': form, 'producto': producto})
+    return render(request, 'catalogo/FRM_PRODUCTOS/editar_form.html', {'form': form, 'producto': producto})
 
 
 def eliminar_producto(request, pk):

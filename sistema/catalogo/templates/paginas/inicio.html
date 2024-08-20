@@ -162,17 +162,34 @@
     <div class="section">
         <h2>Productos Destacados</h2>
         <div class="products">
-            {% for producto in productos %}
-            <div class="product">
-                <figure>
-                    <img src="{{ producto.IMG.url }}" height="100">
-                    <h3>{{ producto.nombre }}</h3>
-                    <p>{{ producto.categoria.nombre }}</p>
-                    <p>{{ producto.descripcion }}</p>
-                    <p><a href="{% url 'editar' producto.id %}" class="btn btn-outline-warning">Editar</a></p>
-                    <p><a href="{% url 'eliminar' producto.id %}" class="btn btn-outline-danger">Eliminar</a></p>
-                </figure>
-            </div>
+            {% for IMG in MEDIA %}
+            <tr>
+                <td>{{ IMG.id }}</td>
+                <td>
+                    <img src="{{ MEDIA.IMG.url }}" height="100">
+                </td>
+                <td>{{ IMG.PRECIO }}</td>
+                <td>{{ IMG.NOMBRE }}</td>
+                <td>{{ IMG.descripcion }}</td>
+                <td>
+                    <a
+                        name=""
+                        id=""
+                        class="btn btn-outline-warning"
+                        href="{% url 'editar' IMG.id%}"
+                        role="button"
+                        >Editar</a
+                    >
+                    <a
+                        name=""
+                        id=""
+                        class="btn btn-outline-danger"
+                        href="{% url 'eliminar' IMG.id%}"
+                        role="button"
+                        >Eliminar</a
+                    >
+                </td>
+            </tr>
             {% endfor %}
         </div>
     </div>
