@@ -22,18 +22,15 @@ def agregar_producto(request):
         form = ProductoForm()
     return render(request, 'FRM_PRODUCTOS/agregar.html', {'form': form})
 
-
-
-def editar_producto(request, pk):
-    producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
+def editar_producto(request, ):
     if request.method == 'POST':
-        form = ProductoForm(request.POST, instance=producto)
+        form = ProductoForm(request.POST,)
         if form.is_valid():
             form.save()
             return redirect('inicio.html')
     else:
-        form = ProductoForm(instance=producto)
-    return render(request, 'catalogo/FRM_PRODUCTOS/editar_form.html', {'form': form, 'producto': producto})
+        form = ProductoForm()
+    return render(request, 'FRM_PRODUCTOS/editar.html', {'form': form,})
 
 
 def eliminar_producto(request, pk):
@@ -41,7 +38,7 @@ def eliminar_producto(request, pk):
     if request.method == 'POST':
         producto.delete()
         return redirect('inicio.html')
-    return render(request, 'catalogo/eliminar.html', {'producto': producto})
+    return render(request, 'FRM_PRODUCTOS/eliminar.html', {'producto': producto})
 
 def agregar_pdf(request):
     if request.method == 'POST':
@@ -51,7 +48,7 @@ def agregar_pdf(request):
             return redirect('inicio.html')
     else:
         form = PDFForm()
-    return render(request, 'catalogo/FORMULARIO.html', {'form': form})
+    return render(request, 'FRM_PDF/cargarpdf.html', {'form': form})
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -62,7 +59,7 @@ def registrar_usuario(request):
             return redirect('inicio.html')
     else:
         form = RegistroUsuarioForm()
-    return render(request, 'catalogo/registro_usuario.html', {'form': form})
+    return render(request, 'FRM_USUARIOS/registro_usuario.html', {'form': form})
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -73,7 +70,7 @@ def login_usuario(request):
             return redirect('inicio.html')
     else:
         form = LoginUsuarioForm()
-    return render(request, 'catalogo/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form})
 
 def logout_usuario(request):
     from django.contrib.auth import logout
