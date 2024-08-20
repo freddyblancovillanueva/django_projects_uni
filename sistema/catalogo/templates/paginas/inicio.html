@@ -156,17 +156,15 @@
 
     <div class="section">
         <h2>Productos Destacados</h2>
-        <div class="products">
-            <table>
-                {% for producto in productos %}
-                <tr>
-                    <td rowspan="2">
-                        <img src="{{ producto.imagen.url }}" height="100">
-                    </td>
-                    <td><span class="label">Nombre:</span> {{ producto.nombre }}</td>
-                    <td><span class="label">Precio:</span> {{ producto.precio }}</td>
-                    <td><span class="label">Descripción:</span> {{ producto.descripcion }}</td>
-                    <td>
+        <div class="products" style="display: flex; justify-content: space-between; flex-wrap: nowrap;">
+            {% for producto in productos %}
+            <div class="product-item" style="flex: 1; margin: 0 10px; text-align: center;">
+                <img src="{{ producto.imagen.url }}" height="100" style="display: block; margin: 0 auto 10px;">
+                <div><span class="label">Nombre:</span> {{ producto.nombre }}</div>
+                <div><span class="label">Precio:</span> {{ producto.precio }}</div>
+                <div><span class="label">Descripción:</span> {{ producto.descripcion }}</div>
+             <div>
+                
                         {% if producto.id %}
                             <a
                                 class="btn btn-outline-warning"

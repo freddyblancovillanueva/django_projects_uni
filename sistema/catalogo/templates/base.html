@@ -26,23 +26,34 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar Producto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'agregar_pdf' %}">Agregar PDF</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout_usuario' %}">Cerrar sesión</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login_usuario' %}">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'registrar_usuario' %}">Registrarse</a>
-                    </li>
-                {% endif %}
+                <!-- Enlaces para usuarios autenticados -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar Producto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'agregar_pdf' %}">Agregar PDF</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_productos' %}">Lista de Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'editar_producto' %}">Editar Producto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout_usuario' %}">Cerrar sesión</a>
+                </li>
+            {% else %}
+                <!-- Enlaces para usuarios no autenticados -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login_usuario' %}">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registrar_usuario' %}">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_productos' %}">Lista de Productos</a>
+                </li>
+            {% endif %}
             </ul>
         </div>
     </nav>

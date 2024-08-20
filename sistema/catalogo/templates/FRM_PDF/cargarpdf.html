@@ -1,25 +1,103 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Cargar PDF</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="pdf_file">Seleccione el archivo PDF:</label>
-                            <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="form-control-file">
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion" rows="5" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Cargar PDF</button>
-                    </form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar PDF</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .card-header {
+            background-color: #17a2b8;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #138496;
+        }
+        .card-header h3 {
+            margin: 0;
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 30px;
+            background-color: #ffffff;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .form-control-file {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .form-control {
+            border-radius: 5px;
+            margin-top: 5px;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #17a2b8;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #138496;
+        }
+        .card-footer {
+            background-color: #f7f7f7;
+            border-top: 2px solid #e9ecef;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Cargar PDF</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="pdf_file">Seleccione el archivo PDF:</label>
+                                <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" class="form-control-file">
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción:</label>
+                                <textarea id="descripcion" name="descripcion" rows="5" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Cargar PDF</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Asegúrese de que el archivo esté en formato PDF.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
