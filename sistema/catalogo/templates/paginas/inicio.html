@@ -162,21 +162,21 @@
     <div class="section">
         <h2>Productos Destacados</h2>
         <div class="products">
-            {% for IMG in MEDIA %}
+            {% for paginas in paginas %}
             <tr>
                 <td>{{ IMG.id }}</td>
                 <td>
-                    <img src="{{ MEDIA.IMG.url }}" height="100">
+                    <img src="{{ producto.imagen.url }}" height="100">
                 </td>
-                <td>{{ IMG.PRECIO }}</td>
-                <td>{{ IMG.NOMBRE }}</td>
-                <td>{{ IMG.descripcion }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
                 <td>
                     <a
                         name=""
                         id=""
                         class="btn btn-outline-warning"
-                        href="{% url 'editar' IMG.id%}"
+                        href="{% url 'editar' producto.id%}"
                         role="button"
                         >Editar</a
                     >
@@ -196,7 +196,7 @@
 
     <div class="pdf-viewer section">
         <h2>PDF DEL CATALOGO</h2>
-        <embed src="/MEDIA/PDF/EMPRESA_final.pdf" type="application/pdf" />
+        <embed src="{{ MEDIA_URL }}PDF/EMPRESA_final.pdf" type="application/pdf" width="100%" height="600px" />
     </div>
 </body>
     <footer>
