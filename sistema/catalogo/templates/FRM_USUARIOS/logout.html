@@ -1,12 +1,18 @@
-{% extends "base.html" %}
-
-{% block titulo %}Iniciar Sesión{% endblock %}
-
-{% block contenido %}
-    <h1>Iniciar Sesión</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-    </form>
-{% endblock %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Cerrar sesión</h3>
+                </div>
+                <div class="card-body">
+                    <p>¿Estás seguro de que deseas cerrar sesión?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-block">Cerrar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

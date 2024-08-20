@@ -37,7 +37,7 @@ def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
     if request.method == 'POST':
         producto.delete()
-        return redirect('inicio.html')
+        return redirect('listar_productos')  # Cambia 'inicio.html' por 'inicio'
     return render(request, 'FRM_PRODUCTOS/eliminar.html', {'producto': producto})
 
 def agregar_pdf(request):
