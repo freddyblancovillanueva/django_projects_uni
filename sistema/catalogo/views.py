@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Producto, PDF
 from .forms import ProductoForm, PDFForm, RegistroUsuarioForm, LoginUsuarioForm
 from django.shortcuts import redirect
+from .models import Producto
+from .forms import ProductoForm
+
 
 
 def listar_productos(request):
@@ -11,15 +14,12 @@ def listar_productos(request):
     return render(request, 'paginas/inicio.html', {'productos': productos})
 
 def agregar_producto(request):
-    if request.method == 'POST':
-        form = ProductoForm(request.POST)
-        if form.is_valid():
+    form = ProductoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
             producto = form.save(commit=False)
             producto.usuario = request.user
             producto.save()
             return redirect('inicio.html')
-    else:
-        form = ProductoForm()
     return render(request, 'FRM_PRODUCTOS/agregar.html', {'form': form})
 
 def editar_producto(request, ):
