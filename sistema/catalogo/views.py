@@ -3,10 +3,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Producto, PDF
 from .forms import ProductoForm, PDFForm, RegistroUsuarioForm, LoginUsuarioForm
+from django.shortcuts import redirect
 
 
 def listar_productos(request):
-    productos = Producto.objects.filter(id_usuario=request.user)
+    productos = Producto.objects.filter(id_usuario=request.user.id)
     return render(request, 'paginas/inicio.html', {'productos': productos})
 
 def agregar_producto(request):
@@ -16,10 +17,10 @@ def agregar_producto(request):
             producto = form.save(commit=False)
             producto.usuario = request.user
             producto.save()
-            return redirect('listar_productos')
+            return redirect('inicio.html')
     else:
         form = ProductoForm()
-    return render(request, 'catalogo/agregar_producto.html', {'form': form})
+    return render(request, 'FRM_PRODUCTOS/agregar.html', {'form': form})
 
 
 

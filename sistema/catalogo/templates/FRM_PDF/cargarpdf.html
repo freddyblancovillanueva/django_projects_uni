@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Iniciar Sesión</h2>
-    <form method="post">
+    <h2>Agregar PDF</h2>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary">Cargar</button>
     </form>
 </div>
 {% endblock %}
