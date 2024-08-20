@@ -9,8 +9,6 @@ def listar_productos(request):
     productos = Producto.objects.filter(id_usuario=request.user)
     return render(request, 'paginas/inicio.html', {'productos': productos})
 
-
-
 def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -18,10 +16,10 @@ def agregar_producto(request):
             producto = form.save(commit=False)
             producto.usuario = request.user
             producto.save()
-            return redirect('inicio.html')
+            return redirect('listar_productos')
     else:
         form = ProductoForm()
-    return render(request, 'catalogo/agregar.html', {'form': form})
+    return render(request, 'catalogo/agregar_producto.html', {'form': form})
 
 
 
