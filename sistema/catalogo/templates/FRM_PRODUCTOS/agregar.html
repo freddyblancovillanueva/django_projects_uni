@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
-{% block titulo %}Agregar película{% endblock %}
+{% block titulo %}Agregar Producto{% endblock %}
 
 {% block contenido %}
-    <h1>Sección agregar película</h1>
-    <p>Llene el siguiente formulario con los datos de la película y luego presione GUARDAR</p>
+    <h1>Agregar Producto</h1>
+    <p>Llene el siguiente formulario con los datos del producto y luego presione GUARDAR</p>
     <div class="card">
-        <div class="card-header"><h3>Datos</h3></div>
+        <div class="card-header"><h3>Datos del Producto</h3></div>
         <div class="card-body">
             {% include "FRM_PRODUCTOS/formulario.html" %}
         </div>
         <div class="card-footer text-muted">
         </div>
     </div>
-    
 {% endblock %}

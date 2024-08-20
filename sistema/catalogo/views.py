@@ -6,6 +6,7 @@ from .forms import ProductoForm, PDFForm, RegistroUsuarioForm, LoginUsuarioForm
 from django.shortcuts import redirect
 from .models import Producto
 from .forms import ProductoForm
+from django.http import HttpResponseForbidden
 
 def listar_productos(request):
     productos = Producto.objects.filter(id_usuario=request.user.id)
@@ -33,11 +34,15 @@ def editar_producto(request, ):
     return render(request, 'FRM_PRODUCTOS/editar.html', {'form': form,})
 
 @login_required
-def eliminar_producto(request, pk):
-    producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
+def eliminar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
     if request.method == 'POST':
+        if not request.user.is_authenticated or not request.user.is_superuser:
+            return HttpResponseForbidden("No tienes permisos para realizar esta acción.")
         producto.delete()
-        return redirect('listar_productos')  # Cambia 'inicio.html' por 'inicio'
+        return redirect('listar_productos')  # Cambia 'listar_productos' por el nombre correcto de tu vista de lista
+
     return render(request, 'FRM_PRODUCTOS/eliminar.html', {'producto': producto})
 
 @login_required
