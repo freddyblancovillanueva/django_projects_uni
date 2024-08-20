@@ -91,42 +91,37 @@
         }
         .products {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
         .product {
             flex: 1;
-            min-width: 220px;
-            margin: 10px;
+            min-width: 300px;
+            max-width: 300px;
             text-align: center;
             background-color: #f9f9f9;
             padding: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            transition: transform 0.2s ease-in-out;
-            perspective: 1000px;
         }
         .product img {
             width: 100%;
             height: auto;
             border-radius: 5px;
-            transition: transform 0.5s ease-in-out;
+            margin-bottom: 10px;
         }
-        .product:hover img {
-            transform: scale(1.2);
+        .product .details {
+            padding: 10px;
         }
-        .item.item:figure {
-            overflow: hidden;
-        }
-        .product h3 {
+        .product .details h3 {
             margin: 10px 0;
             color: #444;
         }
-        .product p {
+        .product .details p {
             color: #666;
             font-size: 0.9em;
         }
-        
         .pdf-viewer {
             text-align: center;
             margin: 20px 0;
@@ -137,7 +132,6 @@
             border: 1px solid #ccc;
             border-radius: 8px;
         }
-
         footer {
             text-align: center;
             padding: 10px;
@@ -152,12 +146,7 @@
     <nav>
         <ul>
             <li><a href="#">Inicio</a></li>
-         
-            <li>
-                <a href="/admin/">Administración</a>
-            </li>
-          
-
+            <li> <a href="/admin/">Administración</a></li>
         </ul>
     </nav>
 
@@ -168,41 +157,43 @@
     <div class="section">
         <h2>Productos Destacados</h2>
         <div class="products">
-            {% for producto in productos %}
-            <tr>
-                <td>{{ IMG.id }}</td>
-                <td>
-                    <img src="{{ producto.imagen.url }}" height="100">
-                </td>
-                <td>{{ producto.precio }}</td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.descripcion }}</td>
-                <td>
-                    <a
-                        name=""
-                        id=""
-                        class="btn btn-outline-warning"
-                        href="{% url 'editar' producto.id%}"
-                        role="button"
-                        >Editar</a
-                    >
-                    <a
-                        name=""
-                        id=""
-                        class="btn btn-outline-danger"
-                        href="{% url 'eliminar' IMG.id%}"
-                        role="button"
-                        >Eliminar</a
-                    >
-                </td>
-            </tr>
-            {% endfor %}
+            <table>
+                {% for producto in productos %}
+                <tr>
+                    <td rowspan="2">
+                        <img src="{{ producto.imagen.url }}" height="100">
+                    </td>
+                    <td><span class="label">Nombre:</span> {{ producto.nombre }}</td>
+                    <td><span class="label">Precio:</span> {{ producto.precio }}</td>
+                    <td><span class="label">Descripción:</span> {{ producto.descripcion }}</td>
+                    <td>
+                        {% if producto.id %}
+                            <a
+                                class="btn btn-outline-warning"
+                                href="{% url 'editar_producto' producto.id %}"
+                                role="button"
+                            >Editar</a>
+                    
+                            <a
+                                class="btn btn-outline-danger"
+                                href="{% url 'eliminar_producto' producto.id %}"
+                                role="button"
+                            >Eliminar</a>
+                        {% else %}
+                            <p></p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
 
     <div class="pdf-viewer section">
         <h2>PDF DEL CATALOGO</h2>
-        <embed src="{{ MEDIA_URL }}PDF/EMPRESA_final.pdf" type="application/pdf" width="100%" height="600px" />
+        <embed src="media/pdfs/tarea3.pdf" type="application/pdf" width="100%" height="500px">
     </div>
 </body>
     <footer>

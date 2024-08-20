@@ -18,7 +18,7 @@ def agregar_producto(request):
             producto = form.save(commit=False)
             producto.usuario = request.user
             producto.save()
-            return redirect('inicio.html')
+            return redirect('/admin/')
     return render(request, 'FRM_PRODUCTOS/agregar.html', {'form': form})
 
 @login_required
@@ -27,7 +27,7 @@ def editar_producto(request, ):
         form = ProductoForm(request.POST,)
         if form.is_valid():
             form.save()
-            return redirect('inicio.html')
+            return redirect('/admin/')
     else:
         form = ProductoForm()
     return render(request, 'FRM_PRODUCTOS/editar.html', {'form': form,})
@@ -70,7 +70,7 @@ def login_usuario(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('inicio.html')
+            return redirect('listar_productos')
     else:
         form = LoginUsuarioForm()
     return render(request, 'registration/login.html', {'form': form})
@@ -78,4 +78,4 @@ def login_usuario(request):
 def logout_usuario(request):
     from django.contrib.auth import logout
     logout(request)
-    return redirect('login_usuario')
+    return redirect('listar_productos')
