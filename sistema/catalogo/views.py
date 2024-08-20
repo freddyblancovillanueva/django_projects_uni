@@ -7,12 +7,11 @@ from django.shortcuts import redirect
 from .models import Producto
 from .forms import ProductoForm
 
-
-
 def listar_productos(request):
     productos = Producto.objects.filter(id_usuario=request.user.id)
     return render(request, 'paginas/inicio.html', {'productos': productos})
 
+@login_required
 def agregar_producto(request):
     form = ProductoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -22,6 +21,7 @@ def agregar_producto(request):
             return redirect('inicio.html')
     return render(request, 'FRM_PRODUCTOS/agregar.html', {'form': form})
 
+@login_required
 def editar_producto(request, ):
     if request.method == 'POST':
         form = ProductoForm(request.POST,)
@@ -32,7 +32,7 @@ def editar_producto(request, ):
         form = ProductoForm()
     return render(request, 'FRM_PRODUCTOS/editar.html', {'form': form,})
 
-
+@login_required
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk, usuario=request.user)
     if request.method == 'POST':
@@ -40,6 +40,7 @@ def eliminar_producto(request, pk):
         return redirect('listar_productos')  # Cambia 'inicio.html' por 'inicio'
     return render(request, 'FRM_PRODUCTOS/eliminar.html', {'producto': producto})
 
+@login_required
 def agregar_pdf(request):
     if request.method == 'POST':
         form = PDFForm(request.POST, request.FILES)
@@ -50,6 +51,7 @@ def agregar_pdf(request):
         form = PDFForm()
     return render(request, 'FRM_PDF/cargarpdf.html', {'form': form})
 
+@login_required
 def registrar_usuario(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
@@ -60,6 +62,7 @@ def registrar_usuario(request):
     else:
         form = RegistroUsuarioForm()
     return render(request, 'FRM_USUARIOS/registro_usuario.html', {'form': form})
+
 
 def login_usuario(request):
     if request.method == 'POST':
